@@ -24,12 +24,16 @@
 
 	<script type="text/javascript">
 		/* 中央定时器控制 */
+		/* 定时控制器对象 */
 		var timers = {
 			timerID: 0,
+            /* 一般指执行函数队列 */
 			timers: [],
+            /* 创建添加处理程序函数 */
 			add: function(fn){
 				this.timers.push(fn);
 			},
+            /* 创建开启定时器的函数 */
 			start: function(){
 				if (this.timerID) return;
 				(function runNext(){
@@ -44,6 +48,7 @@
 					}
 				})()
 			},
+            /* 创建停止定时器的函数 */
 			stop: function(){
 				clearTimeout(this.timerID);
 				this.timerID = 0;
