@@ -1,0 +1,32 @@
+<script type="text/javascript">
+	(function(){
+		// 状态表 queue 函数序列
+		var queue=[],paused=false;
+
+		// 测试注册函数
+		this.test = function(fn){
+			queue.push(fn);
+			runTest();
+		}
+
+		// 定义停止测试函数
+		this.pause = function(){
+			paused = true;
+		}
+
+		// 恢复测试的函数
+		this.resume = function () {
+			// body...
+			paused = false;
+			setTimeout(runTest, 1);
+		}
+
+		// 运行测试函数
+		function runTest(){
+			if(!paused && queue.length){
+				queue.shift()();
+				if(!paused) resume();
+			}
+		}
+	})
+</script>
