@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>切换卡</title>
+    <style type="text/css">
+        .yx-switch {
+            position: relative;
+            float: left;
+            width: 90px;
+            margin: 0;
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select: none;
+        }
+        .yx-switch-checkbox {
+            display: none;
+        }
+        .yx-switch-label {
+            display: block;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid #312799;
+            border-radius: 20px;
+        }
+        html{
+            -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+        }
+        .yx-switch-inner {
+            display: block;
+            width: 200%;
+            margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+        }
+        .yx-switch-inner::before, .yx-switch-inner::after {
+            display: block;
+            float: right;
+            width: 50%;
+            height: 32px;
+            padding: 0;
+            line-height: 32px;
+            font-size: 12px;
+            color: white;
+            font-family:
+            Trebuchet, Arial, sans-serif;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        .yx-switch-inner::after {
+            content: attr(data-on);
+            padding-left: 10px;
+            /*左侧选定时出现*/
+            background-color: #00e500;
+            color: #FFFFFF;
+            text-align: left;
+        }
+        .yx-switch-inner::before {
+            content: attr(data-off);
+            padding-right: 10px;
+            /*整个背景*/
+            background-color: #EEEEEE;
+            color: #999999;
+            text-align: right;
+        }
+        .yx-switch-switch {
+            position: absolute;
+            display: block;
+            width: 36px;
+            height: 24px;
+            margin: 4px;
+            /*中心点*/
+            background: #FFFFFF;
+            top: 0;
+            bottom: 0;
+            right: 40px;
+            border: 1px solid #999999;
+            border-radius: 20px;
+            transition: all 0.3s ease-in 0s;
+        }
+        .yx-switch-checkbox:checked + .yx-switch-label .yx-switch-inner {
+            margin-left: 0;
+        }
+        .yx-switch-checkbox:checked + .yx-switch-label .yx-switch-switch {
+            right: 0px;
+        }
+        .yx-switch-checkbox:checked + .yx-switch-label .yx-switch-inner:after:active{
+            background-color: red;
+            /*background-color: rgb(0, 0, 0, 0);*/
+        }
+    </style>
+</head>
+<body>
+
+    <div class="yx-switch">
+        <input class="yx-switch-checkbox" id="onoffswitch" type="checkbox">
+        <label class="yx-switch-label" for="onoffswitch">
+            <span class="yx-switch-inner" data-on="开锁" data-off="关锁"></span>
+            <span class="yx-switch-switch"></span>
+        </label>
+    </div>
+
+</body>
+</html>
